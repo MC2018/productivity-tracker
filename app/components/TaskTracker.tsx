@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import HollowFilledCircle from "./HollowFilledCircle";
+import ProgressCircle from "./ProgressCircle";
 import Task from "../data/Task";
 import { getSunday, setDayOfWeek } from "../scripts/utils";
 import { TextInput, View, StyleSheet } from "react-native";
 import DeleteButton from "./DeleteButton";
 import { ProgressValue } from "../data/TaskWeekLog";
+import { Colors } from "@/constants/Colors";
 
 interface TaskTrackerProps {
     task: Task;
@@ -43,7 +44,7 @@ const TaskTracker = ({ task, dayInWeek, onDelete, onUpdate }: TaskTrackerProps) 
             />
             <View style={styles.circleContainer}>
                 {Array.from({ length: weeklyProgress.length }).map((_, index) => (
-                    <HollowFilledCircle
+                    <ProgressCircle
                         key={index}
                         progressValue={weeklyProgress[index]}
                         index={index}
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "#ccc",
         borderRadius: 4,
+        color: Colors.custom.text
     },
     circleContainer: {
         flexDirection: "row",

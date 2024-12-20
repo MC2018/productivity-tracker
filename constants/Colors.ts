@@ -23,4 +23,9 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
   },
+  custom: {
+    background: "#313131",
+    text: "#fff",
+    progressCircleColor: "#8279EB"
+  }
 };

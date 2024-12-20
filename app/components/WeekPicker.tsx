@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import HollowFilledCircle from "./HollowFilledCircle";
+import ProgressCircle from "./ProgressCircle";
 import Task from "../data/Task";
 import { getSunday, setDayOfWeek } from "../scripts/utils";
 import { TextInput, View, StyleSheet, Button, Text } from "react-native";
 import DeleteButton from "./DeleteButton";
+import { Colors } from "@/constants/Colors";
 
 interface WeekPickerProps {
     onNewDate: (newDate: Date) => void;
@@ -29,13 +30,16 @@ const WeekPicker = ({ onNewDate }: WeekPickerProps) => {
     return (
         <View style={styles.container}>
             <Button title="<" onPress={goBackwards} color="gray" />
-            <Text>Week of {date.toDateString()}</Text>
+            <Text style={styles.text}>Week of {date.toDateString()}</Text>
             <Button title=">" onPress={goForwards} color="gray" />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    text: {
+        color: Colors.custom.text
+    },
     container: {
         flexDirection: "row",
         alignItems: "center",

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { TouchableOpacity, StyleSheet, View, Pressable } from "react-native";
 import { getNextProgressValue, ProgressValue } from "../data/TaskWeekLog";
+import { Colors } from "@/constants/Colors";
 
-interface HollowFilledCircleProps {
+interface ProgressCircleProps {
     index: number,
     progressValue: ProgressValue,
     onCircleClick: (index: number, nextValue: ProgressValue) => void;
 };
 
-const HollowFilledCircle = ({ index, progressValue, onCircleClick }: HollowFilledCircleProps) => {
+const ProgressCircle = ({ index, progressValue, onCircleClick }: ProgressCircleProps) => {
     return (
         <Pressable style={[styles.container]} onPress={() => {
             onCircleClick(index, getNextProgressValue(progressValue));
@@ -16,13 +17,13 @@ const HollowFilledCircle = ({ index, progressValue, onCircleClick }: HollowFille
             <View
                 style={[
                     styles.circle,
-                    { backgroundColor: progressValue == 1 ? "blue" : "transparent" }
+                    { backgroundColor: progressValue == 1 ? Colors.custom.progressCircleColor : "transparent" }
                 ]}>
             </View>
             <View
                 style={[
                     styles.semicircle,
-                    { backgroundColor: progressValue == 0.5 ? "blue" : "transparent" }
+                    { backgroundColor: progressValue == 0.5 ? Colors.custom.progressCircleColor : "transparent" }
                 ]}>
             </View>
         </Pressable>
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 50,
         borderWidth: 4,
-        borderColor: "blue",
+        borderColor: Colors.custom.progressCircleColor,
         zIndex: 2
     },semicircle: {
         width: 50,
@@ -53,4 +54,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HollowFilledCircle;
+export default ProgressCircle;
