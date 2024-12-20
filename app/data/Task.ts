@@ -41,10 +41,7 @@ export default class Task {
             return weekLog[0];
         }
 
-        const newWeekLog = {
-            weekStart: sunday,
-            weeklyProgress: Array(7).fill(0)
-        };
+        const newWeekLog: TaskWeekLog = new TaskWeekLog(sunday);
         this.weekLogs.push(newWeekLog);
         return newWeekLog;
     }

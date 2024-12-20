@@ -2,9 +2,14 @@ export default class TaskWeekLog {
     weekStart: Date;
     weeklyProgress: ProgressValue[];
 
-    constructor(weekStart: Date, weeklyProgress: ProgressValue[]) {
+    constructor(weekStart: Date, weeklyProgress?: ProgressValue[]) {
         this.weekStart = weekStart;
-        this.weeklyProgress = weeklyProgress;
+
+        if (weeklyProgress != undefined) {
+            this.weeklyProgress = weeklyProgress;
+        } else {
+            this.weeklyProgress = Array(7).fill(0);
+        }
     }
 
     static generate(rawData: any) {
