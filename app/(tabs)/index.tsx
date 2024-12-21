@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View } from "react-native";
+import { Image, StyleSheet, Platform, View, Text, ScrollView } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -13,12 +13,20 @@ import { Colors } from "@/constants/Colors";
 
 export default function HomeScreen() {
     return (
-        <View style={{
+        <ScrollView style={{
             backgroundColor: Colors.custom.background,
             width: "100%",
             height: "100%"
         }}>
-            <TaskGroup></TaskGroup>
-        </View>
+            <Text style={{fontSize: 60, color: Colors.custom.text, marginLeft: "auto", marginRight: "auto"}}>
+                Prodotivity
+            </Text>
+            <View style={{
+                marginLeft: "auto",
+                marginRight: "auto"
+            }}>
+                <TaskGroup></TaskGroup>
+            </View>
+        </ScrollView>
     );
 }
