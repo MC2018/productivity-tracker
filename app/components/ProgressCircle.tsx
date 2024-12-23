@@ -17,14 +17,19 @@ const ProgressCircle = ({ index, progressValue, onCircleClick }: ProgressCircleP
             <View
                 style={[
                     styles.circle,
-                    { backgroundColor: progressValue == 1 ? Colors.custom.progressCircleColor : "transparent" }
+                    {
+                        backgroundColor: progressValue == 0 ? "transparent" : Colors.custom.progressCircleColor,
+                        position: "absolute"
+                    }
                 ]}>
             </View>
-            <View
-                style={[
-                    styles.semicircle,
-                    { backgroundColor: progressValue == 0.5 ? Colors.custom.progressCircleColor : "transparent" }
-                ]}>
+            
+            {progressValue == 0.5 ? <View style={styles.hideSemicircle}></View> : <></>}
+            <View style={[
+                styles.circle,
+                { backgroundColor: "transparent" }
+            ]}>
+
             </View>
         </Pressable>
     );
@@ -41,17 +46,13 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 50,
         borderWidth: 4,
-        borderColor: Colors.custom.progressCircleColor,
-        zIndex: 2
-    },semicircle: {
+        borderColor: Colors.custom.progressCircleColor
+    },hideSemicircle: {
         width: 50,
         height: 25,
-        borderBottomLeftRadius: 50,
-        borderBottomRightRadius: 50,
-        marginTop: 25,
-        zIndex: 1,
+        backgroundColor: Colors.custom.background,
         position: "absolute"
-    },
+    }
 });
 
 export default ProgressCircle;

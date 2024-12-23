@@ -35,7 +35,9 @@ const TaskTracker = ({ task, dayInWeek, onDelete, onUpdate }: TaskTrackerProps) 
 
     return (
         <View style={styles.container}>
-            <DeleteButton onConfirm={handleDeleteConfirm} itemName={task.name}></DeleteButton>
+            <View style={styles.delete}>
+                <DeleteButton onConfirm={handleDeleteConfirm} itemName={task.name}></DeleteButton>
+            </View>
             <TextInput
                 style={styles.input}
                 value={task.name}
@@ -44,12 +46,12 @@ const TaskTracker = ({ task, dayInWeek, onDelete, onUpdate }: TaskTrackerProps) 
             />
             <View style={styles.circleContainer}>
                 {Array.from({ length: weeklyProgress.length }).map((_, index) => (
-                    <ProgressCircle
-                        key={index}
-                        progressValue={weeklyProgress[index]}
-                        index={index}
-                        onCircleClick={handleCircleClick}
-                    />
+                        <ProgressCircle
+                            key={index}
+                            progressValue={weeklyProgress[index]}
+                            index={index}
+                            onCircleClick={handleCircleClick}
+                        />
                 ))}
             </View>
         </View>
@@ -61,21 +63,26 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 16,
-        marginVertical: 8,
+        marginVertical: 8
     },
     input: {
         padding: 10,
         fontSize: 16,
         width: 200,
         borderWidth: 2,
-        borderColor: "#ccc",
-        borderRadius: 4,
-        color: Colors.custom.text
+        borderColor: Colors.custom.nameColor,
+        borderRadius: 25,
+        backgroundColor: Colors.custom.nameColor,
+        color: Colors.custom.text,
+        textAlign: "center"
     },
     circleContainer: {
         flexDirection: "row",
-        gap: 16,
+        gap: 16
     },
+    delete: {
+        width: 100
+    }
 });
 
 export default TaskTracker;

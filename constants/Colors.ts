@@ -26,6 +26,8 @@ export const Colors = {
   custom: {
     background: "#313131",
     text: "#fff",
-    progressCircleColor: "#8279EB"
+    progressCircleColor: "#8279EB",
+    nameColor: "#5A558E",
+    button: "#202020"
   }
 };
